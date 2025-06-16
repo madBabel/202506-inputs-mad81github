@@ -12,6 +12,7 @@ on:
       target:
         description: "Which environment the workflow will target"  
         type: environment 
+        required: true
 
       tag:
         description: "Release from which to build and deploy"
