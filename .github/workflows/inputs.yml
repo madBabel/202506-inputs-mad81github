@@ -12,16 +12,21 @@ on:
       
 jobs:
   build:
-   # outputs:
-   #   variableSalida: "mi Valor"
+    outputs:
+      salidaJob: ${{steps.suma.outputs.SUMA}}
     runs-on: ubuntu-latest
     steps:
       - name: Suma
-        run: echo "SUMA=$(( ${{ inputs.num1 }} + ${{ inputs.num2 }} ))"
+        id: suma
+        run: echo "SUMA=$(( ${{ inputs.num1 }} + ${{ inputs.num2 }} ))" > "$GITHUB_OUTPUT"
+       
+      - name: Resta
+        id: resta
+        run: echo "RESTA=$(( ${{ inputs.num1 }} - ${{ inputs.num2 }} ))" > "$GITHUB_OUTPUT"
 
- # deploy:
-  #  runs-on: ubuntu-latest
-  #  needs: build      
-  #  steps:
-   #   - name: Deploy
-    #    run: echo "Variable es ${{needs.build.outputs.variableSalida}}" 
+  deploy:
+   runs-on: ubuntu-latest
+   needs: build      
+   steps:
+     - name: Pintar suma
+       run: echo "La suma es ${{needs.build.outputs.salidaJob}}" 
