@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Suma
-        run: echo "${{inputs.num1}} + ${{inputs.num2}}"
+        run: echo "SUMA=$(( ${{ inputs.num1 }} + ${{ inputs.num2 }} ))"
 
  # deploy:
   #  runs-on: ubuntu-latest
