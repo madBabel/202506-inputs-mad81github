@@ -13,7 +13,8 @@ on:
 jobs:
   build:
     outputs:
-      salidaJob: ${{steps.suma.outputs.SUMA}}
+      salidaJobsuma: ${{steps.suma.outputs.SUMA}}
+      salidaJobResta: ${{steps.suma.outputs.RESTA}}
     runs-on: ubuntu-latest
     steps:
       - name: Suma
@@ -29,4 +30,7 @@ jobs:
    needs: build      
    steps:
      - name: Pintar suma
-       run: echo "La suma es ${{needs.build.outputs.salidaJob}}" 
+       run: echo "La suma es ${{needs.build.outputs.salidaJobsuma}}" 
+     
+     - name: Pintar resta
+       run: echo "La suma es ${{needs.build.outputs.salidaJobResta}}" 
