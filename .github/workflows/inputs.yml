@@ -1,6 +1,7 @@
 name: Working with Inputs
 
 on:
+
   workflow_dispatch:
     inputs:
       dry-run:
